@@ -8,7 +8,7 @@ class ProductController extends Controller
 {
     public function index(){
 
-        echo "Listado de todos los productos";
+        return view('products.index');
     }
 
     public function create(){
