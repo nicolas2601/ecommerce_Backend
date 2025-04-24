@@ -1,170 +1,164 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promociones</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        .bg-promo {
-            background-image: url('/images/unab.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        .category-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
-        }
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-        }
-        .btn-glow {
-            transition: box-shadow 0.3s ease;
-        }
-        .btn-glow:hover {
-            box-shadow: 0 0 15px rgba(128, 0, 128, 0.6);
-        }
-        .carousel-item {
-            transition: opacity 0.5s ease;
-        }
-    </style>
-</head>
-<body class="bg-white">
+@extends('layouts.app')
 
-    <!-- Banner de Promociones -->
-    <div class="bg-promo h-96 flex items-center justify-center text-white relative">
-        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-        <div class="text-center relative z-10">
-            <h1 class="text-5xl font-bold mb-4 animate-fade-in-down">¡Grandes Promociones!</h1>
-            <p class="text-xl mb-6 animate-fade-in-down">Aprovecha nuestras ofertas exclusivas por tiempo limitado.</p>
-            <button class="mt-6 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full btn-glow animate-fade-in-up">
-                Ver Ofertas
-            </button>
+@section('title', 'Bienvenido a Ecommerce')
+
+{{-- No se necesita Tailwind aquí, se usará Bootstrap del layout principal --}}
+@push('styles')
+<style>
+    /* Estilos específicos para la página de bienvenida si son necesarios */
+    body {
+        /* Puedes mantener la fuente si la cargas globalmente o usar una fuente de Bootstrap */
+        /* font-family: 'Poppins', sans-serif; */
+    }
+    .hero-section {
+        background-image: url('{{ asset('images/unab.jpg') }}'); /* Usar asset() para las imágenes */
+        background-size: cover;
+        background-position: center;
+        color: white; /* Asegurar contraste */
+        padding: 6rem 1rem;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* Sombra para legibilidad */
+    }
+    .category-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none; /* Quitar borde por defecto de card */
+    }
+    .category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    .testimonial-section {
+        background-color: #f8f9fa; /* Un fondo suave para testimonios */
+    }
+    .testimonial-card {
+        background: white;
+        border: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+    }
+    .feature-icon {
+        font-size: 2.5rem; /* Ajustar tamaño de iconos */
+        color: var(--bs-primary); /* Usar color primario de Bootstrap */
+    }
+</style>
+@endpush
+
+@section('content')
+    {{-- Hero Section --}}
+    <section class="hero-section text-center mb-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Bienvenido a Nuestra Tienda</h1>
+            <p class="lead">Descubre productos increíbles a precios inmejorables.</p>
+            <a href="{{ route('products.index') }}" class="btn btn-primary btn-lg mt-3">Explorar Productos</a>
         </div>
-    </div>
+    </section>
 
-    <!-- Carrusel de Productos Destacados -->
-    <div class="container mx-auto px-6 py-12">
-        <h2 class="text-3xl font-bold text-purple-800 mb-8 text-center">Productos Destacados</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Producto 1 -->
-            <div class="category-card bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src="/images/backend.jpg" alt="Producto 1" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-purple-800 mb-2">Producto 1</h3>
-                    <p class="text-gray-600">Descripción breve del producto destacado.</p>
-                    <a href="#" class="mt-4 inline-block text-orange-500 hover:text-orange-600">Ver más</a>
-                </div>
-            </div>
-
-            <!-- Producto 2 -->
-            <div class="category-card bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src="/images/descarga.jpg" alt="Producto 2" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-purple-800 mb-2">Producto 2</h3>
-                    <p class="text-gray-600">Descripción breve del producto destacado.</p>
-                    <a href="#" class="mt-4 inline-block text-orange-500 hover:text-orange-600">Ver más</a>
-                </div>
-            </div>
-
-            <!-- Producto 3 -->
-            <div class="category-card bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src="/images/unab.jpg" alt="Producto 3" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-purple-800 mb-2">Producto 3</h3>
-                    <p class="text-gray-600">Descripción breve del producto destacado.</p>
-                    <a href="#" class="mt-4 inline-block text-orange-500 hover:text-orange-600">Ver más</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Testimonios -->
-    <div class="bg-purple-50 py-12">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-purple-800 mb-8 text-center">Testimonios</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonio 1 -->
-                <div class="testimonial-card p-6 rounded-lg shadow-lg">
-                    <p class="text-gray-600">"Excelente servicio y productos de alta calidad. ¡Muy recomendado!"</p>
-                    <div class="mt-4 flex items-center">
-                        <img src="/images/unab.jpg" alt="Cliente 1" class="w-10 h-10 rounded-full">
-                        <div class="ml-3">
-                            <h4 class="text-purple-800 font-semibold">Cliente 1</h4>
-                            <p class="text-gray-500">CEO, Empresa 1</p>
+    {{-- Featured Categories --}}
+    <section class="featured-categories mb-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Categorías Destacadas</h2>
+            <div class="row g-4">
+                {{-- Ejemplo de Categoría 1 --}}
+                <div class="col-md-4">
+                    <div class="card category-card text-center">
+                        <img src="{{ asset('images/descarga.jpg') }}" class="card-img-top" alt="Electrónicos" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Electrónicos</h5>
+                            <p class="card-text">Lo último en tecnología.</p>
+                            <a href="#" class="btn btn-outline-primary">Ver Más</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Testimonio 2 -->
-                <div class="testimonial-card p-6 rounded-lg shadow-lg">
-                    <p class="text-gray-600">"Increíble experiencia de compra. Volveré a comprar sin duda."</p>
-                    <div class="mt-4 flex items-center">
-                        <img src="/images/unab.jpg" alt="Cliente 2" class="w-10 h-10 rounded-full">
-                        <div class="ml-3">
-                            <h4 class="text-purple-800 font-semibold">Cliente 2</h4>
-                            <p class="text-gray-500">Gerente, Empresa 2</p>
+                {{-- Ejemplo de Categoría 2 --}}
+                <div class="col-md-4">
+                    <div class="card category-card text-center">
+                         <img src="{{ asset('images/backend.jpg') }}" class="card-img-top" alt="Moda" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Moda</h5>
+                            <p class="card-text">Tendencias actuales.</p>
+                            <a href="#" class="btn btn-outline-primary">Ver Más</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Testimonio 3 -->
-                <div class="testimonial-card p-6 rounded-lg shadow-lg">
-                    <p class="text-gray-600">"Los mejores precios y atención al cliente. ¡Gracias!"</p>
-                    <div class="mt-4 flex items-center">
-                        <img src="/images/unab.jpg" alt="Cliente 3" class="w-10 h-10 rounded-full">
-                        <div class="ml-3">
-                            <h4 class="text-purple-800 font-semibold">Cliente 3</h4>
-                            <p class="text-gray-500">Director, Empresa 3</p>
+                {{-- Ejemplo de Categoría 3 --}}
+                <div class="col-md-4">
+                    <div class="card category-card text-center">
+                        <img src="{{ asset('images/unab.jpg') }}" class="card-img-top" alt="Hogar" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Hogar</h5>
+                            <p class="card-text">Todo para tu espacio.</p>
+                            <a href="#" class="btn btn-outline-primary">Ver Más</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Formulario de Suscripción -->
-    <div class="bg-purple-800 py-12">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold text-white mb-4">Suscríbete a nuestras promociones</h2>
-            <p class="text-purple-200 mb-8">Recibe las últimas ofertas y novedades directamente en tu correo.</p>
-            <form class="max-w-lg mx-auto">
-                <div class="flex flex-col md:flex-row gap-4">
-                    <input type="email" placeholder="Tu correo electrónico" class="flex-1 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
-                    <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg btn-glow">
-                        Suscribirse
-                    </button>
+    {{-- Features Section --}}
+    <section class="features mb-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Por Qué Elegirnos</h2>
+            <div class="row text-center g-4">
+                <div class="col-md-4">
+                    <div class="feature-icon mb-2"><i class="bi bi-truck"></i></div> {{-- Asume que tienes Bootstrap Icons --}}
+                    <h5>Envío Rápido</h5>
+                    <p>Entrega confiable y veloz a tu puerta.</p>
                 </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-purple-900 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2023 Tu Empresa. Todos los derechos reservados.</p>
-            <div class="mt-4">
-                <a href="#" class="mx-2 hover:text-orange-300">Términos y Condiciones</a>
-                <a href="#" class="mx-2 hover:text-orange-300">Política de Privacidad</a>
-                <a href="#" class="mx-2 hover:text-orange-300">Contacto</a>
+                <div class="col-md-4">
+                    <div class="feature-icon mb-2"><i class="bi bi-shield-check"></i></div>
+                    <h5>Pagos Seguros</h5>
+                    <p>Transacciones protegidas y seguras.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-icon mb-2"><i class="bi bi-headset"></i></div>
+                    <h5>Soporte 24/7</h5>
+                    <p>Estamos aquí para ayudarte en cualquier momento.</p>
+                </div>
             </div>
         </div>
-    </footer>
+    </section>
 
-</body>
-</html>
+    {{-- Testimonials Section --}}
+    <section class="testimonial-section py-5 mb-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Lo Que Dicen Nuestros Clientes</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card testimonial-card p-4">
+                        <blockquote class="blockquote mb-0">
+                            <p>"¡Excelente servicio y productos de alta calidad! Muy recomendable."</p>
+                            <footer class="blockquote-footer">Cliente Satisfecho</footer>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card testimonial-card p-4">
+                        <blockquote class="blockquote mb-0">
+                            <p>"La mejor experiencia de compra online que he tenido. Volveré a comprar."</p>
+                            <footer class="blockquote-footer">Comprador Feliz</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- Call to Action --}}
+    <section class="cta text-center bg-light py-5">
+        <div class="container">
+            <h2>¿Listo para Empezar a Comprar?</h2>
+            <p class="lead">Explora nuestra amplia selección de productos hoy mismo.</p>
+            <a href="{{ route('products.index') }}" class="btn btn-primary btn-lg">Ir a la Tienda</a>
+        </div>
+    </section>
+@endsection
+
+{{-- Asegúrate de incluir Bootstrap Icons si usas los iconos bi-* --}}
+{{-- Puedes añadir el CDN en layouts/app.blade.php --}}
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> --}}
 
 
 
