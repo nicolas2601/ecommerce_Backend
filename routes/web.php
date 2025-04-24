@@ -3,8 +3,9 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
-Route::get('/', HomeController::class);
+
   
 
 
@@ -15,3 +16,10 @@ Route::post('/products', [ProductController::class, 'store'])->name('products.st
 
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
+
+Auth::routes();
+
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
