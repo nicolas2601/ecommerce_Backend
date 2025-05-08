@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(): \Illuminate\View\View
     {
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->paginate(12);
         $categories = Category::all();
+        
         return view('products.index', compact('products', 'categories'));
     }
 

@@ -1,144 +1,163 @@
 @extends('layouts.app')
 
-@section('title', 'Bienvenido a Ecommerce')
+@section('title', 'Bienvenido a GameStore - Tu Tienda de Juegos y Hardware')
 
 {{-- No se necesita Tailwind aquí, se usará Bootstrap del layout principal --}}
 @push('styles')
 <style>
-    /* Estilos específicos para la página de bienvenida si son necesarios */
-    body {
-        /* Puedes mantener la fuente si la cargas globalmente o usar una fuente de Bootstrap */
-        /* font-family: 'Poppins', sans-serif; */
-    }
-    .hero-section {
-        background-image: url('{{ asset('images/unab.jpg') }}'); /* Usar asset() para las imágenes */
+    .hero-section-gamestore {
+        background: linear-gradient(rgba(22, 33, 62, 0.8), rgba(22, 33, 62, 0.9)), url('{{ asset('images/gaming-hero-bg.jpg') }}'); /* Reemplaza con una imagen temática de videojuegos/hardware */
         background-size: cover;
         background-position: center;
-        color: white; /* Asegurar contraste */
-        padding: 6rem 1rem;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* Sombra para legibilidad */
+        color: #e0e0e0;
+        padding: 8rem 1rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
     }
-    .category-card {
+    .hero-section-gamestore h1 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 3.5rem;
+        color: #e94560; /* Color de acento */
+    }
+    .hero-section-gamestore .lead {
+        font-size: 1.5rem;
+        color: #a0a0c0;
+    }
+    .category-card-gamestore {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: none; /* Quitar borde por defecto de card */
+        border: 1px solid #0f3460;
+        background-color: #16213e;
     }
-    .category-card:hover {
+    .category-card-gamestore:hover {
         transform: translateY(-10px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 15px 30px rgba(233, 69, 96, 0.2);
     }
-    .testimonial-section {
-        background-color: #f8f9fa; /* Un fondo suave para testimonios */
+    .category-card-gamestore .card-img-top {
+        border-bottom: 3px solid #e94560;
     }
-    .testimonial-card {
-        background: white;
-        border: none;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
+    .category-card-gamestore .card-title {
+        font-family: 'Orbitron', sans-serif;
+        color: #e94560;
     }
-    .testimonial-card:hover {
-        transform: translateY(-5px);
+    .testimonial-section-gamestore {
+        background-color: #16213e; /* bg-dark-2 */
+        padding: 4rem 0;
     }
-    .feature-icon {
-        font-size: 2.5rem; /* Ajustar tamaño de iconos */
-        color: var(--bs-primary); /* Usar color primario de Bootstrap */
+    .testimonial-card-gamestore {
+        background-color: #0f3460; /* bg-dark-3 */
+        border: 1px solid #1f2a40;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    .testimonial-card-gamestore blockquote p {
+        color: #e0e0e0;
+    }
+    .testimonial-card-gamestore .blockquote-footer {
+        color: #a0a0c0;
+    }
+    .feature-icon-gamestore {
+        font-size: 3rem;
+        color: #e94560; /* Color de acento */
+        margin-bottom: 1rem;
+    }
+    .features-gamestore h5 {
+        font-family: 'Orbitron', sans-serif;
+        color: #e0e0e0;
+    }
+    .features-gamestore p {
+        color: #a0a0c0;
+    }
+    .cta-gamestore {
+        background-color: #0f3460; /* bg-dark-3 */
+        padding: 4rem 0;
+    }
+    .cta-gamestore h2 {
+        font-family: 'Orbitron', sans-serif;
+        color: #e94560;
+    }
+    .cta-gamestore .lead {
+        color: #a0a0c0;
     }
 </style>
 @endpush
 
 @section('content')
     {{-- Hero Section --}}
-    <section class="hero-section text-center mb-5">
-        <div class="container">
-            <h1 class="display-4 fw-bold">Bienvenido a Nuestra Tienda</h1>
-            <p class="lead">Descubre productos increíbles a precios inmejorables.</p>
-            <a href="{{ route('products.index') }}" class="btn btn-primary btn-lg mt-3">Explorar Productos</a>
-        </div>
-    </section>
-
-    {{-- Featured Categories --}}
-    <section class="featured-categories mb-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Categorías Destacadas</h2>
-            <div class="row g-4">
-                {{-- Ejemplo de Categoría 1 --}}
-                <div class="col-md-4">
-                    <div class="card category-card text-center">
-                        <img src="{{ asset('images/descarga.jpg') }}" class="card-img-top" alt="Electrónicos" style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Electrónicos</h5>
-                            <p class="card-text">Lo último en tecnología.</p>
-                            <a href="#" class="btn btn-outline-primary">Ver Más</a>
-                        </div>
-                    </div>
-                </div>
-                {{-- Ejemplo de Categoría 2 --}}
-                <div class="col-md-4">
-                    <div class="card category-card text-center">
-                         <img src="{{ asset('images/backend.jpg') }}" class="card-img-top" alt="Moda" style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Moda</h5>
-                            <p class="card-text">Tendencias actuales.</p>
-                            <a href="#" class="btn btn-outline-primary">Ver Más</a>
-                        </div>
-                    </div>
-                </div>
-                {{-- Ejemplo de Categoría 3 --}}
-                <div class="col-md-4">
-                    <div class="card category-card text-center">
-                        <img src="{{ asset('images/unab.jpg') }}" class="card-img-top" alt="Hogar" style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Hogar</h5>
-                            <p class="card-text">Todo para tu espacio.</p>
-                            <a href="#" class="btn btn-outline-primary">Ver Más</a>
-                        </div>
-                    </div>
+    <div class="hero-section-gamestore text-white py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="display-4 fw-bold mb-4">Bienvenido a GameStore</h1>
+                    <p class="lead mb-5 fs-4">Tu destino #1 para Videojuegos, Hardware y Accesorios Gamer</p>
+                    <a href="{{ route('products.index') }}" class="btn gamestore-btn-primary btn-lg px-5 py-3">
+                        <i class="fas fa-shopping-bag me-2"></i>Ver Productos
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    {{-- Featured Categories --}}
+    <div class="container py-5">
+        <h2 class="text-center mb-5 display-5 fw-bold text-accent">Categorías Destacadas</h2>
+        <div class="row g-4">
+            @foreach($categories as $category)
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 category-card-gamestore gamestore-card">
+                    <img src="{{ asset('storage/' . $category->image) }}" class="card-img-top" alt="{{ $category->name }}" style="height: 250px; object-fit: cover;">
+                    <div class="card-body text-center p-4">
+                        <h5 class="card-title fs-4 fw-bold">{{ $category->name }}</h5>
+                        <p class="card-text gamestore-label mb-4">{{ $category->description }}</p>
+                        <a href="#" class="btn gamestore-btn-secondary btn-lg px-4">
+                            <i class="fas fa-arrow-right me-2"></i>Explorar
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
 
     {{-- Features Section --}}
-    <section class="features mb-5">
+    <section class="features-gamestore py-5">
         <div class="container">
-            <h2 class="text-center mb-4">Por Qué Elegirnos</h2>
+            <h2 class="text-center mb-5 text-accent">¿Por Qué GameStore?</h2>
             <div class="row text-center g-4">
                 <div class="col-md-4">
-                    <div class="feature-icon mb-2"><i class="bi bi-truck"></i></div> {{-- Asume que tienes Bootstrap Icons --}}
-                    <h5>Envío Rápido</h5>
-                    <p>Entrega confiable y veloz a tu puerta.</p>
+                    <div class="feature-icon-gamestore mb-2"><i class="fas fa-shipping-fast"></i></div>
+                    <h5>Envíos Ultra-Rápidos</h5>
+                    <p>Recibe tus juegos y componentes en tiempo récord.</p>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-icon mb-2"><i class="bi bi-shield-check"></i></div>
-                    <h5>Pagos Seguros</h5>
-                    <p>Transacciones protegidas y seguras.</p>
+                    <div class="feature-icon-gamestore mb-2"><i class="fas fa-shield-alt"></i></div>
+                    <h5>Pagos 100% Seguros</h5>
+                    <p>Compra con confianza, tus datos están protegidos.</p>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-icon mb-2"><i class="bi bi-headset"></i></div>
-                    <h5>Soporte 24/7</h5>
-                    <p>Estamos aquí para ayudarte en cualquier momento.</p>
+                    <div class="feature-icon-gamestore mb-2"><i class="fas fa-headset"></i></div>
+                    <h5>Soporte Gamer Experto</h5>
+                    <p>Nuestro equipo de gamers está listo para asistirte.</p>
                 </div>
             </div>
         </div>
     </section>
 
     {{-- Testimonials Section --}}
-    <section class="testimonial-section py-5 mb-5">
+    <section class="testimonial-section-gamestore py-5 mb-5">
         <div class="container">
-            <h2 class="text-center mb-4">Lo Que Dicen Nuestros Clientes</h2>
+            <h2 class="text-center mb-5 text-accent">Voces de la Comunidad Gamer</h2>
             <div class="row g-4">
                 <div class="col-md-6">
-                    <div class="card testimonial-card p-4">
+                    <div class="card testimonial-card-gamestore gamestore-card p-4">
                         <blockquote class="blockquote mb-0">
-                            <p>"¡Excelente servicio y productos de alta calidad! Muy recomendable."</p>
-                            <footer class="blockquote-footer">Cliente Satisfecho</footer>
+                            <p>"¡GameStore es mi tienda de confianza! Precios increíbles y el envío fue rapidísimo."</p>
+                            <footer class="blockquote-footer">Juan 'ProGamer' Pérez</footer>
                         </blockquote>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card testimonial-card p-4">
+                    <div class="card testimonial-card-gamestore gamestore-card p-4">
                         <blockquote class="blockquote mb-0">
-                            <p>"La mejor experiencia de compra online que he tenido. Volveré a comprar."</p>
-                            <footer class="blockquote-footer">Comprador Feliz</footer>
+                            <p>"El hardware que compré llegó perfecto y el soporte técnico me ayudó con mis dudas. ¡10/10!"</p>
+                            <footer class="blockquote-footer">Ana 'TechQueen' Gómez</footer>
                         </blockquote>
                     </div>
                 </div>
@@ -147,11 +166,11 @@
     </section>
 
     {{-- Call to Action --}}
-    <section class="cta text-center bg-light py-5">
+    <section class="cta-gamestore text-center py-5">
         <div class="container">
-            <h2>¿Listo para Empezar a Comprar?</h2>
-            <p class="lead">Explora nuestra amplia selección de productos hoy mismo.</p>
-            <a href="{{ route('products.index') }}" class="btn btn-primary btn-lg">Ir a la Tienda</a>
+            <h2>¿Listo para Subir de Nivel tu Experiencia Gamer?</h2>
+            <p class="lead">Descubre las últimas novedades en juegos, consolas, PC gaming y periféricos.</p>
+            <a href="{{ route('products.index') }}" class="btn gamestore-btn-primary btn-lg"><i class="fas fa-gamepad me-2"></i>Explorar Tienda</a>
         </div>
     </section>
 @endsection

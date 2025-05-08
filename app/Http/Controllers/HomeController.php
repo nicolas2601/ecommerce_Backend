@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category; // Importar el modelo Category
 
 class HomeController extends Controller
 {
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect()->route('products.index');
+        $categories = \App\Models\Category::all(); // Asegúrate de que el modelo Category esté importado o usa la ruta completa.
+        return view('welcome', compact('categories'));
     }
 }

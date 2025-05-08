@@ -1,0 +1,268 @@
+/* Global Theme Styles for GameStore */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+body.gamestore-theme {
+    background-color: #1a1a2e; /* Fondo oscuro principal */
+    color: #e0e0e0; /* Texto claro general */
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#app.gamestore-theme-app {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+main.gamestore-main-content {
+    flex: 1;
+    padding-top: 20px; /* Espacio para la navbar */
+    padding-bottom: 20px;
+}
+
+.gamestore-container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) {
+    .gamestore-container {
+        max-width: 540px;
+    }
+}
+@media (min-width: 768px) {
+    .gamestore-container {
+        max-width: 720px;
+    }
+}
+@media (min-width: 992px) {
+    .gamestore-container {
+        max-width: 960px;
+    }
+}
+@media (min-width: 1200px) {
+    .gamestore-container {
+        max-width: 1140px;
+    }
+}
+
+/* Navbar Styling */
+.navbar.gamestore-navbar {
+    background-color: #0f3460; /* Azul oscuro para navbar */
+    border-bottom: 2px solid #e94560; /* Borde de acento */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navbar.gamestore-navbar .navbar-brand,
+.navbar.gamestore-navbar .nav-link {
+    color: #e0e0e0;
+    font-family: 'Orbitron', sans-serif; /* Fuente temática para branding y links principales */
+    transition: color 0.3s ease;
+}
+
+.navbar.gamestore-navbar .navbar-brand:hover,
+.navbar.gamestore-navbar .nav-link:hover,
+.navbar.gamestore-navbar .nav-link.active {
+    color: #e94560; /* Color de acento al pasar el mouse o activo */
+}
+
+.navbar.gamestore-navbar .navbar-toggler {
+    border-color: rgba(224, 224, 224, 0.5);
+}
+
+.navbar.gamestore-navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28224, 224, 224, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Card Styling */
+.card.gamestore-card {
+    background-color: #16213e; /* Azul oscuro para tarjetas */
+    border: 1px solid #0f3460;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    color: #e0e0e0;
+}
+
+.card.gamestore-card .card-header {
+    background-color: #0f3460; /* Azul más oscuro para encabezado de tarjeta */
+    color: #e94560; /* Color de acento para título de tarjeta */
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #1a1a2e;
+    padding: 20px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.card.gamestore-card .card-body {
+    padding: 25px 35px;
+}
+
+/* Form Control Styling */
+.form-control.gamestore-input {
+    background-color: #1f2a40;
+    border: 1px solid #0f3460;
+    color: #e0e0e0;
+    border-radius: 8px;
+}
+
+.form-control.gamestore-input:focus {
+    background-color: #1f2a40;
+    border-color: #e94560;
+    color: #e0e0e0;
+    box-shadow: 0 0 0 0.2rem rgba(233, 69, 96, 0.25);
+}
+
+.form-label.gamestore-label {
+    color: #a0a0c0; /* Un color más suave para las etiquetas */
+}
+
+/* Button Styling */
+.btn.gamestore-btn-primary {
+    background-color: #e94560;
+    border-color: #e94560;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.btn.gamestore-btn-primary:hover {
+    background-color: #d43750;
+    border-color: #d43750;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(233, 69, 96, 0.3);
+}
+
+.btn.gamestore-btn-secondary {
+    background-color: #53a8b6;
+    border-color: #53a8b6;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn.gamestore-btn-secondary:hover {
+    background-color: #438a96;
+    border-color: #438a96;
+    transform: translateY(-2px);
+}
+
+.btn-link.gamestore-link {
+    color: #53a8b6;
+    text-decoration: none;
+}
+
+.btn-link.gamestore-link:hover {
+    color: #e94560;
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+.gamestore-footer {
+    background-color: #0f3460; /* Mismo color que la navbar */
+    color: #a0a0c0; /* Texto un poco más suave para el footer */
+    padding: 40px 0;
+    border-top: 2px solid #e94560; /* Borde de acento */
+    margin-top: auto; /* Empuja el footer hacia abajo */
+}
+
+.gamestore-footer h5 {
+    color: #e0e0e0;
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 15px;
+}
+
+.gamestore-footer ul li a {
+    color: #a0a0c0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.gamestore-footer ul li a:hover {
+    color: #e94560;
+}
+
+.gamestore-footer .social-icons a {
+    color: #a0a0c0;
+    font-size: 1.5rem; /* Ajusta según sea necesario */
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.gamestore-footer .social-icons a:hover {
+    color: #e94560;
+}
+
+.gamestore-footer .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #1f2a40; /* Línea divisora sutil */
+    margin-top: 20px;
+}
+
+/* Utility Classes */
+.text-accent {
+    color: #e94560 !important;
+}
+
+.bg-dark-1 {
+    background-color: #1a1a2e !important;
+}
+
+.bg-dark-2 {
+    background-color: #16213e !important;
+}
+
+.bg-dark-3 {
+    background-color: #0f3460 !important;
+}
+
+/* Animations (can be expanded with anime.js if needed) */
+.animated-card-gamestore {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+/* Font Awesome Icons - Ensure FontAwesome is linked in app.blade.php */
+.game-icon {
+    font-size: 2.5rem;
+    color: #e94560;
+    margin-bottom: 10px;
+}
+
+/* Specific adjustments for login/register pages */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .navbar.gamestore-navbar .navbar-nav {
+        text-align: center;
+    }
+    .gamestore-footer .col-md-4 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .gamestore-footer .social-icons {
+        justify-content: center;
+    }
+}
